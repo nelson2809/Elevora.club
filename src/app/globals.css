@@ -1,0 +1,176 @@
+@import "tailwindcss";
+@import "@fontsource/italiana";
+@import "@fontsource/mrs-saint-delafield";
+@import "@fontsource-variable/karla";
+@import "@fontsource/cormorant-garamond/300.css";
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/400-italic.css";
+
+@theme {
+  /* Elevora Seoul Spa palette: white and cream rooms, powder-blue sky, navy lattice accents,
+     a warm cocoa-brown for type and the Elevora champagne gold for hairlines (matches the "E" logo). */
+  --color-white: #ffffff;
+  --color-cream: #f8f5ef;
+  --color-pearl: #f8f5ef;
+  --color-sky: #dbe8f7;
+  --color-sky-deep: #b9cfe8;
+  --color-navy: #1f3d68;
+  --color-navy-deep: #142a4a;
+  --color-cocoa: #6e3b30;
+  --color-taupe: #a68a80;
+  --color-gold: #d5b17c;
+  --color-champagne: #c9a46a;
+  --color-champagne-deep: #a3814b;
+  --color-stone: #e6dccd;
+  --color-ink: #5a3229;
+  --color-ink-soft: #8a6b62;
+  /* kept for inner-page blocks */
+  --color-blush: #f3ece4;
+  --color-rose: #6e3b30;
+  --color-celadon-soft: #eef3f9;
+  --color-jade: #1f3d68;
+  --color-jade-deep: #142a4a;
+  --color-sage: #9aa8a6;
+  --color-sage-deep: #6f7f72;
+  --color-olive: #8a9466;
+
+  --font-display: "Italiana", "Cormorant Garamond", Didot, serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-script: "Mrs Saint Delafield", cursive;
+  --font-sans: "Karla Variable", "Karla", system-ui, sans-serif;
+  --font-mono: "Karla Variable", "Karla", system-ui, sans-serif;
+}
+
+html {
+  background: var(--color-white);
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
+  /* no background here: the fixed curtain footer sits behind the page */
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Thin, wide display caps (headings) */
+.display-xl {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  display: inline-block;
+}
+
+/* "WORD script WORD" headline: the script word sits low between the caps and overlaps them */
+.duo {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  color: var(--color-taupe);
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.duo .script {
+  font-family: var(--font-script);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1.55em;
+  line-height: 0.5;
+  color: var(--color-taupe);
+  margin: 0 -0.12em;
+  transform: translateY(0.18em);
+  display: inline-block;
+}
+
+/* Hero states before the opening animation runs (removed by script) */
+.hero-pre .hero-card { inset: 0; }
+.hero-pre .hero-logo,
+.hero-pre .hero-pic-a,
+.hero-pre .hero-pic-b,
+.hero-pre .hero-title,
+.hero-pre .hero-scroll { opacity: 0; }
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.split-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+.line-mask {
+  overflow: hidden;
+  display: block;
+}
+
+/* Stepped passe-partout frame around a picture */
+.mat {
+  background: var(--color-cream);
+  padding: clamp(18px, 3.4vw, 54px);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.02), 0 1px 0 rgb(255 255 255 / 0.8);
+}
+.mat > .mat-inner {
+  background: var(--color-white);
+  padding: clamp(10px, 1.3vw, 18px);
+  box-shadow: 0 10px 30px -12px rgb(110 59 48 / 0.18);
+}
+.mat > .mat-inner > .mat-core {
+  background: var(--color-cream);
+  padding: clamp(8px, 1.2vw, 18px);
+  box-shadow: inset 0 2px 8px rgb(110 59 48 / 0.12);
+}
+
+/* Bands */
+.band-stripes {
+  height: 64px;
+  border-block: 3px solid var(--color-gold);
+  background: repeating-linear-gradient(90deg, var(--color-navy-deep) 0 3px, #fff 3px 11px);
+}
+.band-squares {
+  height: 28px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Crect x='4' y='4' width='20' height='20' fill='none' stroke='%23dbe8f7' stroke-width='4'/%3E%3C/svg%3E") repeat-x center;
+}
+
+/* Faint square grid behind card sections */
+.grid-squares {
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Crect x='14' y='14' width='44' height='44' fill='none' stroke='%23f7f1e6' stroke-width='9'/%3E%3C/svg%3E") repeat;
+}
+
+/* Korean lattice (ah-ja) band */
+.band-lattice {
+  height: 34px;
+  border-block: 2px solid var(--color-navy);
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='30'%3E%3Cpath d='M0 15h7V6h20v18H7v-9M17 0v6M17 24v6M27 15h7' fill='none' stroke='%231f3d68' stroke-width='2.4'/%3E%3C/svg%3E") repeat-x center;
+}
+
+/* Header colour stays fixed (cream bar); legacy hooks kept for inner pages */
+.chrome { color: var(--color-ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
